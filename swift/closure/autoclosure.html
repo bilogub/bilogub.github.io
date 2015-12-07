@@ -6,12 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Swift lang notes</title>
-  <meta name="description" content="My little notes about Swift language
-">
+  <title>Autoclosure argument attribute</title>
+  <meta name="description" content="While looking into some framework code saw @autoclosure argument attribute.Which I found very interesting for myself. Read about where you could apply it here.">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://bilogub.github.io//">
+  <link rel="canonical" href="http://bilogub.github.io//swift/closure/autoclosure.html">
   <link rel="alternate" type="application/rss+xml" title="Swift lang notes" href="http://bilogub.github.io//feed.xml">
 </head>
 
@@ -64,49 +63,43 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <div class="home">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-  <h1 class="page-heading">Posts</h1>
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Autoclosure argument attribute</h1>
+    <p class="post-meta"><time datetime="2015-12-07T14:54:00+02:00" itemprop="datePublished">Dec 7, 2015</time></p>
+  </header>
+  <div class="post-content" itemprop="articleBody">
+    <p>While looking into some framework code saw <code class="highlighter-rouge">@autoclosure</code> argument attribute.
+Which I found very interesting for myself. Read about where you could apply it <a href="https://developer.apple.com/swift/blog/?id=4">here</a>.</p>
 
-  <ul class="post-list">
-    
-      <li>
-        <span class="post-meta">Dec 7, 2015</span>
+<p>In short – you tell compiler to wrap argument into closure implicitly and can pass this closure as an argument without curly braces.</p>
 
-        <h2>
-          <a class="post-link" href="/swift/closure/autoclosure.html">Autoclosure argument attribute</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Dec 7, 2015</span>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kd">func</span> <span class="nf">isTrue</span><span class="p">(</span><span class="kd">@autoclosure</span> <span class="nv">expr</span><span class="p">:</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">return</span> <span class="nf">expr</span><span class="p">()</span> <span class="p">}</span>
 
-        <h2>
-          <a class="post-link" href="/swift/reactivecocoa/reactive-playground.html">Reactive Playground</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Dec 4, 2015</span>
+<span class="nf">isTrue</span><span class="p">(</span><span class="mi">3</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)</span></code></pre></figure>
 
-        <h2>
-          <a class="post-link" href="/swift/closure/closure-as-default-value.html">Swift Closure as default value</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Nov 29, 2015</span>
+<p>As you can see this closure can’t take any arguments.</p>
 
-        <h2>
-          <a class="post-link" href="/swift/extension/rubyish-swift.html">Rubyish Swift</a>
-        </h2>
-      </li>
-    
-  </ul>
+  </div>
+</article>
+<div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+this.page.url = "http://bilogub.github.io//swift/closure/autoclosure.html";
+this.page.identifier = "Autoclosure argument attribute";
+};
 
-  <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
 
-</div>
+s.src = '//bilogubblog.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 
       </div>
     </div>
