@@ -4,11 +4,56 @@
     <title>Swift lang notes</title>
     <description>My little notes about Swift language
 </description>
-    <link>http://bilogub.github.io/</link>
-    <atom:link href="http://bilogub.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 04 Dec 2015 17:59:51 +0200</pubDate>
-    <lastBuildDate>Fri, 04 Dec 2015 17:59:51 +0200</lastBuildDate>
+    <link>http://bilogub.github.io//</link>
+    <atom:link href="http://bilogub.github.io//feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Mon, 07 Dec 2015 14:32:31 +0200</pubDate>
+    <lastBuildDate>Mon, 07 Dec 2015 14:32:31 +0200</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>Reactive Playground</title>
+        <description>&lt;p&gt;Easy steps to make your Playground Reactive.
+What I did:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Created a Workspace&lt;/li&gt;
+  &lt;li&gt;Downloaded &lt;a href=&quot;https://github.com/ReactiveCocoa/ReactiveCocoa/archive/v4.0.0-alpha.4.zip&quot;&gt;ReactiveCocoa&lt;/a&gt; archive&lt;/li&gt;
+  &lt;li&gt;Executed &lt;code class=&quot;highlighter-rouge&quot;&gt;carthage bootstrap&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Added &lt;code class=&quot;highlighter-rouge&quot;&gt;Result.xcodeproj&lt;/code&gt; from &lt;code class=&quot;highlighter-rouge&quot;&gt;Carthage/Checkouts/&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;ReactiveCocoa.xcodeproj&lt;/code&gt; to Workspace&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Now &lt;code class=&quot;highlighter-rouge&quot;&gt;import ReactiveCocoa&lt;/code&gt; in your playground file&lt;/p&gt;
+
+&lt;p&gt;and try the following(&lt;em&gt;&lt;a href=&quot;https://github.com/ReactiveCocoa/ReactiveCocoa/blob/master/Documentation/BasicOperators.md#filtering&quot;&gt;example source&lt;/a&gt;&lt;/em&gt;):&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;&lt;span class=&quot;nf&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;signal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;observer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Signal&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;NoError&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;pipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;signal&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filter&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;number&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;number&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;observeNext&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;next&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;observer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;sendNext&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;// Not printed&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;observer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;sendNext&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;// Prints 2&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;observer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;sendNext&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;// Not printed&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;observer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;sendNext&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;// prints 4&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+</description>
+        <pubDate>Mon, 07 Dec 2015 13:57:35 +0200</pubDate>
+        <link>http://bilogub.github.io//swift/reactivecocoa/reactive-playground.html</link>
+        <guid isPermaLink="true">http://bilogub.github.io//swift/reactivecocoa/reactive-playground.html</guid>
+        
+        <category>swift</category>
+        
+        <category>playground</category>
+        
+        <category>reactivecocoa</category>
+        
+        
+        <category>swift</category>
+        
+        <category>reactivecocoa</category>
+        
+      </item>
     
       <item>
         <title>Swift Closure as default value</title>
@@ -66,8 +111,8 @@ We should change it to &lt;code class=&quot;highlighter-rouge&quot;&gt;var&lt;/c
 
 </description>
         <pubDate>Fri, 04 Dec 2015 15:48:35 +0200</pubDate>
-        <link>http://bilogub.github.io/swift/closure/closure-as-default-value.html</link>
-        <guid isPermaLink="true">http://bilogub.github.io/swift/closure/closure-as-default-value.html</guid>
+        <link>http://bilogub.github.io//swift/closure/closure-as-default-value.html</link>
+        <guid isPermaLink="true">http://bilogub.github.io//swift/closure/closure-as-default-value.html</guid>
         
         <category>swift</category>
         
@@ -139,8 +184,8 @@ to include the &lt;code class=&quot;highlighter-rouge&quot;&gt;fromNow&lt;/code&
 &lt;p&gt;Try to call &lt;code class=&quot;highlighter-rouge&quot;&gt;1.hour.fromNow&lt;/code&gt; it works!&lt;/p&gt;
 </description>
         <pubDate>Sun, 29 Nov 2015 15:48:35 +0200</pubDate>
-        <link>http://bilogub.github.io/swift/extension/rubyish-swift.html</link>
-        <guid isPermaLink="true">http://bilogub.github.io/swift/extension/rubyish-swift.html</guid>
+        <link>http://bilogub.github.io//swift/extension/rubyish-swift.html</link>
+        <guid isPermaLink="true">http://bilogub.github.io//swift/extension/rubyish-swift.html</guid>
         
         <category>ruby</category>
         
